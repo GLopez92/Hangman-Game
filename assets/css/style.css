@@ -1,0 +1,38 @@
+body{
+	background-color: black;
+}
+
+.jumbotron{
+	background-color: black;
+}
+
+h3, p{
+	color: #fff;
+}
+
+#postion{
+	max-width: 680px;
+}
+
+.col-sm-9{
+
+	width: 100%;
+}
+
+
+#pic{
+	height: 500px;
+	border: 1px dashed #fff;
+	/*background: url("../images/sahara-gallery.jpg");*/
+}
+
+#game{
+	height: 500px; 
+	border: 1px dashed #fff; 
+	text-align: center; 
+	padding-top: 80px;
+	/*background: url("../images/sahara-gallery.jpg");*/
+
+
+}
+
