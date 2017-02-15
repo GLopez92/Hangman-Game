@@ -6,8 +6,8 @@
 	<title>Hangman-Game</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  	<link rel="stylesheet" type="text/css" href="hangman-game/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="hangman-game/assets/css/reset.css">
     
     
 </head>
@@ -15,7 +15,7 @@
  <div class="container-fluid">
   <div class="row">
         <div class="jumbotron">
-            <img src="assets/images/hangman_title_lg.gif" style="width: 100%; height: 250px"/>
+            <img src="hangman-game/assets/images/hangman_title_lg.gif" style="width: 100%; height: 250px"/>
         </div>
   	</div>
   <div class= "container">
@@ -23,31 +23,32 @@
 		  <div class="col-sm-9">
 		    <div id="position" class="row">
 		      <div id="pic" class="col-xs-8 col-sm-6">      
-		      <img src="#" style="width: 200px; height: 200px;"/>
+		      <img src="hangman-game/assets/images/hangman.jpg" style="width: 350px; height: 200px;"/>
 		      </div> 
 		      <div id="game" class="col-xs-4 col-sm-6">
 		   			<h3>Press any key to get started!</h3>
 			      	<br/>
+			      	<p id="win"></p>
+			      	<p id="losses"></p>
 			      	<br/>
 			      	<p>Current word</p>
 			      	<br/>
-			      	<div id="gameboard">
-
-			      	<p id="changer">_ _ _ _ _ _ _</p>
-			      	<p id="gameparts"></p>
-					
-			      	</div>
+			      	<p id="changer"></p>
 			      	<br/>
 			        <p>Number of Guesses Remaining</p>
+			        <br/>
+			        <p id="guess-counter"></p>
 			  	    <br/>
 			  	    <br/>
 				    <p>Letters already guessed</p>
+				    <br/>
+				    <p id="guess-tracker"></p>
 		      </div>
 		    </div>
 		  </div>
 	</div>
 </div>
 </div>
-<script type="text/javascript" src="assets/javascript/game.js"></script>
+<script type="text/javascript" src="hangman-game/assets/javascript/game.js"></script>
 </body>
 </html>

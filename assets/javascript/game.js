@@ -1,49 +1,119 @@
-var userguess = [ 
-['s','a', 'n','t','a','n','a'],
-['b','e','a','t','l','e','s'],
-['d','e','a','d','m','a','n'] 
-];
 
-var random = Math.floor((Math.random()*(userguess.length-1)));
+var userGuesses = ["santana", "beatles", "deadman"];
+var pictures = ["beatles.jpg" , "santana.jpg", "deadman.jpg" ];
 
-var compchooses = userguess['random'];
-var generate = new Array(compchooses);
-var error = 0;
+var chosenWord = "";
+var letterInChosenWord = [];
+var generateBlanks = 0;
+var compchooses = [];
+var wrongGuesses = [];
 
-for(var i = 0; i < generate.length; i++){
+var win = 0;
+var losses = 1;
+var numGuesses = 9;
 
-	generate[i] = "_ ";
+console.log("level1");
+
+function begin(){
+
+	numGuesses = 9;
+	compchooses = [];
+	wrongGuesses = [];
+
+
+	random = userGuesses[Math.floor(Math.random() * userGuesses.length)];
+	letterInChosenWord = random.split("");
+	generateBlanks = letterInChosenWord.length;
+
+	console.log(random);
+	console.log(generateBlanks);
+
+	for(var i = 0; i < generateBlanks; i++){
+		compchooses.push("_")
+	}
+
+	console.log(compchooses);
+	document.getElementById('changer').innerHTML = compchooses.join(" ");
+	document.getElementById('guess-counter').innerHTML = numGuesses;
+	
 
 };
 
-function printGenerate(){
-	for (var i = 0; i < generate.length; i++){
-		var gameboard = document.getElementById("gameboard");
-		var invisibleletter = document.createElement("div");
-		invisibleletter.innerHTML = generate[i];
-		gameboard.appendChild(invisibleletter);
-	};
-}
+console.log("level2");
 
+function guessChecker(letter){
 
-var guessChecker = function(){
+	var letterInWord  = false;
 
-	var replacer = document.changer;
-	var checker = replacer.elements["gameparts"];
-	var userpick = checker.value;
-
-	userpick = userpick.toLowerCase();
-	
-	for(var i = 0; i < compchooses.length; i++){
-		if(compchooses[i] === userpick){
-			generate[i] = userpick + " ";
-			var rightchoose = true;
+	for(var i = 0; i < generateBlanks; i++){
+		if(chosenWord[i] === letter){
+			letterInWord = true;
 		}
-
-	checker.value = " ";
+	}
+	if(letterInWord){
+		for(var i = 0; i < generateBlanks; i++){
+		if(chosenWord[i] === letter){
+			compchooses[i] == letter;
+		}
+		console.log("inside our guessChecker function", compchooses);
+		}
+	}else{
+		numGuesses --;
+		wrongGuesses.push(letter);
 	}
 
-}
+	console.log("our wrong guesses in guessChecker function", wrongGuesses);
+	
+	
+};
 
-printGenerate();
-guessChecker();
+
+console.log("level3");
+
+function complete(){
+
+
+	document.getElementById("changer").innerHTML = compchooses.join(" ");
+	document.getElementById('guess-counter').innerHTML = numGuesses;
+	document.getElementById('guess-tracker').innerHTML = wrongGuesses.join(" ");
+	// document.getElepicmentById('pic').innerHTML = pictures.join(" ");
+
+	
+
+	// if(compchooses.indexof(letter >= 1)){
+	// 	cosole.log(letter)
+	// }
+
+
+	if (letterInChosenWord.join(" ") === compchooses.join(" ")){
+		win++;
+		alert("you win!!");
+		document,getElementById('win').innerHTML = win;
+		wrongGuesses = [];
+		begin();
+	}else if(numGuesses === 0){
+		document.getElementById('losses').innerHTML = losses++;
+		alert("Try Again");
+		wrongGuesses = [];
+		begin();
+
+
+
+	}
+
+};
+
+
+begin();
+document.onkeyup = function(event){
+
+	var usersPick = String.fromCharCode(event.keyCode).toLowerCase();
+	console.log("this is the letter we typed", usersPick);
+	guessChecker(usersPick);
+	complete();
+
+};
+
+
+
+
