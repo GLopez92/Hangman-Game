@@ -2,7 +2,7 @@
 var userGuesses = ["santana", "beatles", "deadman"];
 var pictures = ["beatles.jpg" , "santana.jpg", "deadman.jpg" ];
 
-var chosenWord = "";
+var chosenWord = ["santana", "beatles", "deadman"];
 var letterInChosenWord = [];
 var generateBlanks = 0;
 var compchooses = [];
@@ -46,14 +46,14 @@ function guessChecker(letter){
 	var letterInWord  = false;
 
 	for(var i = 0; i < generateBlanks; i++){
-		if(chosenWord[i] === letter){
+		if(random[i] === letter){
 			letterInWord = true;
 		}
 	}
 	if(letterInWord){
 		for(var i = 0; i < generateBlanks; i++){
-		if(chosenWord[i] === letter){
-			compchooses[i] == letter;
+		if(random[i] === letter){
+			compchooses[i] = letter;
 		}
 		console.log("inside our guessChecker function", compchooses);
 		}
@@ -73,7 +73,7 @@ console.log("level3");
 function complete(){
 
 
-	document.getElementById("changer").innerHTML = compchooses.join(" ");
+	document.getElementById('changer').innerHTML = compchooses.join(" ");
 	document.getElementById('guess-counter').innerHTML = numGuesses;
 	document.getElementById('guess-tracker').innerHTML = wrongGuesses.join(" ");
 	// document.getElepicmentById('pic').innerHTML = pictures.join(" ");
@@ -87,8 +87,8 @@ function complete(){
 
 	if (letterInChosenWord.join(" ") === compchooses.join(" ")){
 		win++;
+		document.getElementById('win').innerHTML = win;
 		alert("you win!!");
-		document,getElementById('win').innerHTML = win;
 		wrongGuesses = [];
 		begin();
 	}else if(numGuesses === 0){
